@@ -12,6 +12,15 @@ $f3 = Base::instance();
 
 //Define a default route
 $f3->route('GET /', function() {
-//    $view = new Template();
-//    echo $view->render('home.html');
+    $view = new Template();
+    echo $view->render('views/home.html');
 });
+
+//Route to order form
+$f3->route('GET /order', function() {
+    $view = new Template();
+    echo $view->render('views/pet-order.html');
+})
+
+//Run fat free
+$f3->run();
