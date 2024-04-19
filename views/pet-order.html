@@ -1,17 +1,21 @@
 <include href="views/header.html"></include>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid text-center">
         <h2>Order a pet:</h2>
-        <form action="#" method="POST">
+        <form action="#" method="POST" class="mx-auto w-50">
             <div class="row">
-                <p></p>
-                <input type="text">
+                <label for="type" class="form-label">What kind of pet would you like to order?</label>
+                <input type="text" class="form-control" id="type"><br>
             </div>
             <div class="row">
-                <p></p>
-
+                <label for="color" class="form-label"l>Select a color</label>
+                <select class="form-select" id="color">
+                    <option selected value="purple">Purple</option>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                </select>
             </div><br>
-            <button class="btn btn-success"></button>
+            <button class="btn btn-success">Place order</button>
         </form>
     </div>
 </body>

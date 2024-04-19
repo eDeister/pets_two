@@ -17,10 +17,10 @@ $f3->route('GET /', function() {
 });
 
 //Route to order form
-$f3->route('GET /order', function() {
+$f3->route('GET|POST /order', function() {
     $view = new Template();
     echo $view->render('views/pet-order.html');
-})
+});
 
 //Run fat free
 $f3->run();
