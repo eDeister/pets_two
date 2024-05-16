@@ -22,16 +22,28 @@ $f3->route('GET|POST /order', function($f3) {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //Get data
         $color = $_POST['color'];
-        $pet = $_POST['type'];
+        $type = $_POST['types'];
+
+
+        if(!empty($type)) {
+            if($type == 'robotic') {
+                $pet = new RoboticPet("", $_POST['color'],"");
+                $f3->set('SESSION.pet',$pet);
+            } else if($type == 'stuffed') {
+                $pet = new StuffedPet("", $_POST['color'],"","","");
+                $f3->set('SESSION.pet',$pet);
+            }
+
+
+        }
 
         //Validate the data
-        if (!isset($_POST['color']) || !isset($_POST['type'])) {
+        if (!isset($_POST['color']) || !isset($_POST['types'])) {
             echo 'Please enter a pet type.';
             echo var_dump($_POST);
         } else {
             //Data is valid
-            $f3->set('SESSION.color', $color);
-            $f3->set('SESSION.type', $pet);
+            $f3->set('SESSION.pet',$pet);
             $f3->reroute('summary');
         }
     } else {
@@ -43,16 +55,6 @@ $f3->route('GET|POST /order', function($f3) {
 });
 
 $f3->route('GET /summary', function($f3) {
-    if(isset($_POST['types'])) {
-        if($_POST['types'] == 'robotic') {
-            $pet = new RoboticPet("", $_POST['color'],"");
-            $f3->set('SESSION.pet',$pet);
-        } else if($_POST['types'] == 'stuffed') {
-            $pet = new StuffedPet("", $_POST['color'],"","","");
-            $f3->set('SESSION.pet',$pet);
-        }
-
-    }
 
     $view = new Template();
     echo $view->render('views/order-summary.html');
