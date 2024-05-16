@@ -29,9 +29,11 @@ $f3->route('GET|POST /order', function($f3) {
             if($type == 'robotic') {
                 $pet = new RoboticPet("", $_POST['color'],"");
                 $f3->set('SESSION.pet',$pet);
+                $f3->reroute('robotic');
             } else if($type == 'stuffed') {
                 $pet = new StuffedPet("", $_POST['color'],"","","");
                 $f3->set('SESSION.pet',$pet);
+                $f3->reroute('stuffed');
             }
 
 
