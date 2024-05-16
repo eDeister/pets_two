@@ -42,7 +42,18 @@ $f3->route('GET|POST /order', function($f3) {
     echo $view->render('views/pet-order.html');
 });
 
-$f3->route('GET /summary', function() {
+$f3->route('GET /summary', function($f3) {
+    if(isset($_POST['types'])) {
+        if($_POST['types'] == 'robotic') {
+            $pet = new RoboticPet("", $_POST['color'],"");
+            $f3->set('SESSION.pet',$pet);
+        } else if($_POST['types'] == 'stuffed') {
+            $pet = new StuffedPet("", $_POST['color'],"","","");
+            $f3->set('SESSION.pet',$pet);
+        }
+
+    }
+
     $view = new Template();
     echo $view->render('views/order-summary.html');
 });
