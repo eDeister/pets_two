@@ -12,4 +12,31 @@ class StuffedPet extends Pet
         $this->_stuffingType = $stuffingType;
         $this->_material = $material;
     }
+
+    function setSize($size)
+    {
+        $this->_size = $size;
+    }
+
+    function setMaterial($material)
+    {
+        $this->_material = $material;
+    }
+
+    public function getSize()
+    {
+        return $this->_size;
+    }
+
+    public function getStuffingType()
+    {
+        return $this->_stuffingType;
+    }
+
+    public function getMaterial()
+    {
+        return $this->_material;
+    }
+
+
 }

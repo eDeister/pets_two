@@ -56,6 +56,35 @@ $f3->route('GET|POST /order', function($f3) {
     echo $view->render('views/pet-order.html');
 });
 
+$f3->route('GET|POST /stuffed', function($f3) {
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $pet = $f3->get('SESSION.pet');
+
+        $pet->setSize($_POST['size']);
+        $pet->setMaterial($_POST['material']);
+
+        $f3->set('SESSION.pet',$pet);
+        $f3->reroute('summary');
+    }
+
+    $view = new Template();
+    echo $view->render('views/stuffed.html');
+});
+
+$f3->route('GET|POST /robotic', function($f3) {
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $pet = $f3->get('SESSION.pet');
+
+        $pet->setAccessories($_POST['accessories']);
+
+        $f3->set('SESSION.pet',$pet);
+        $f3->reroute('summary');
+    }
+
+    $view = new Template();
+    echo $view->render('views/robotic.html');
+});
+
 $f3->route('GET /summary', function($f3) {
 
     $view = new Template();
