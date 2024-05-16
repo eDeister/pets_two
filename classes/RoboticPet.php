@@ -1,6 +1,6 @@
 <?php
 
-class RoboticPet
+class RoboticPet extends Pet
 {
     private $_accessories;
 
