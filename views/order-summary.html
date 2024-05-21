@@ -1,6 +1,20 @@
 <include href="views/header.html"></include>
 <body>
     <h3><b>Results page:</b></h3>
-    <p>Thank you for ordering a {{ @SESSION.color }} {{ @SESSION.type }}!</p>
+    <check if="{{ @SESSION.pet instanceOf RoboticPet }}">
+        <true>
+            <p>Thank you for ordering a {{ @SESSION.pet->getColor() }} Robotic pet with the following accessories:</p>
+            <ul>
+                <repeat group="{{ @SESSION.pet->getAccessories() }}" value="{{ @val }}">
+                    <li>{{ @val }}</li>
+                </repeat>
+            </ul>
+        </true>
+    </check>
+    <check if="{{ @SESSION.pet instanceOf StuffedPet }}">
+        <true>
+            <p>Thank you for ordering a {{ @SESSION.pet->getSize() }} {{ @SESSION.pet->getColor() }} Stuffed pet made of {{ @SESSION.pet->getMaterial() }}</p>
+        </true>
+    </check>
 </body>
 </html>

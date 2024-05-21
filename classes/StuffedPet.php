@@ -5,7 +5,7 @@ class StuffedPet extends Pet
     private $_stuffingType;
     private $_material;
 
-    function __construct($animal="", $color="", $size="",$stuffingType="",$material="")
+    function __construct($animal="Animal", $color="Color", $size="Size",$stuffingType="Stuffing",$material="Material")
     {
         parent:: __construct($animal,$color);
         $this->_size = $size;

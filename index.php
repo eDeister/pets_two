@@ -3,8 +3,8 @@
 //Set error reporting to true, require autoload, and start session
 ini_set('error_reporting',1);
 error_reporting(E_ALL);
-session_start();
 require_once('vendor/autoload.php');
+session_start();
 
 //Instantiate f3 base class
 $f3 = Base::instance();
@@ -42,14 +42,11 @@ $f3->route('GET|POST /order', function($f3) {
         //Validate the data
         if (!isset($_POST['color']) || !isset($_POST['types'])) {
             echo 'Please enter a pet type.';
-            echo var_dump($_POST);
         } else {
             //Data is valid
             $f3->set('SESSION.pet',$pet);
             $f3->reroute('summary');
         }
-    } else {
-        echo 'get method';
     }
 
     $view = new Template();
@@ -85,8 +82,7 @@ $f3->route('GET|POST /robotic', function($f3) {
     echo $view->render('views/robotic.html');
 });
 
-$f3->route('GET /summary', function($f3) {
-
+$f3->route('GET|POST /summary', function($f3) {
     $view = new Template();
     echo $view->render('views/order-summary.html');
 });

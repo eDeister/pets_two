@@ -5,15 +5,18 @@
 <div class="container-fluid text-center">
     <h2>Robotic Pet</h2>
     <form action="#" method="POST" class="mx-auto w-50">
-        <div class="row">
-            <label for="accessories" class="form-label">What accessories would you like?</label>
-            <select class="form-select" name="accessories" id="accessories">
-                <option value="battery">Battery Packs</option>
-                <option value="speaker">Bluetooth Speaker</option>
-                <option value="voice">Voice Module</option>
-                <option value="remote">Remote Control</option>
-            </select>
-        </div>
+        <label>What accessories would you like?</label>
+        <br>
+
+        <input type="checkbox" name="accessories[]" class="form-check-input" id="battery" value="Battery Packs">
+        <label for="battery" class="form-label">Battery Packs</label><br>
+        <input type="checkbox" name="accessories[]" class="form-check-input" id="bluetooth" value="Bluetooth Speaker">
+        <label for="bluetooth" class="form-label">Bluetooth Speaker</label><br>
+        <input type="checkbox" name="accessories[]" class="form-check-input" id="voice" value="Voice Module">
+        <label for="voice" class="form-label">Voice Module</label><br>
+        <input type="checkbox" name="accessories[]" class="form-check-input" id="remote" value="Remote Control">
+        <label for="remote" class="form-label">Remote Control</label>
+        <br>
 
         <button class="btn btn-success">Place order</button>
     </form>
